@@ -98,16 +98,26 @@ and open the template in the editor.
 .nav-right{
     float: right!important;
 }
-@media (min-width: 1200px)
-.container {
-    width: 1170px;
+/*Specific handler for media based on screen width*/
+@media (min-width: 768px){
+    .container > navBar{
+        margin-right: 0;
+        margin-left: 0;
+    }
 }
-
-@media (min-width: 768px)
-.container{
-    width: 750px;
+/*Container Media*/
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
 }
-.container > navBar{
-    margin-right: 0;
-    margin-left: 0;
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
 }
