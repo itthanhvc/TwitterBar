@@ -4,6 +4,10 @@
             getTweets: function (topic) {
                var ds = new DataService("GetTweetsServlet", $q, $http);
                return ds.get(topic);
+            }, 
+             postTweets: function (topic) {
+               var ds = new DataService("GetTweetsServlet", $q, $http);
+               return ds.post(topic);
             }
         };
     });

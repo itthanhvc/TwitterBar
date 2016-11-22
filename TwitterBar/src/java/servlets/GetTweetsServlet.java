@@ -7,10 +7,25 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import twitter4j.JSONArray;
+import twitter4j.JSONException;
+
+import twitter4j.JSONObject;
+import twitter4j.Query;
+import twitter4j.QueryResult;
+import twitter4j.Status;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.User;
+import twitter4j.conf.ConfigurationBuilder;
 
 /**
  *
@@ -18,59 +33,68 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class GetTweetsServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    public static final String CONSUMER_KEY= "0G9Q20NCuK1hIWjYvdEBbGaEl";
+    public static final String CONSUMER_SECRET= "x3nx3SjYT6hdJBx1dcRFVxhBePbAl2CDIyO9xyHZi3kSgmtLqG";
+    public static final String ACCESS_KEY= "995074657-miNaA7Vqofi7FInIdg8DOXboNjwdP1Kap4Wfm3vP";
+    public static final String ACCESS_SECRET= "GRRuPiSvc4eg3uBQbn2htYbkJo4p3FK0zUgOdciuKdQIt";
+    
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet GetTweetsServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet GetTweetsServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = resp.getWriter();
+        String topic = req.getParameter("topic");
+        System.out.println(topic);
+        ConfigurationBuilder cb = configTwitter(); 
+        JSONArray tweetInfos = searchTopic(cb, topic);
+        resp.setContentType("application/json");
+        out.print(tweetInfos);
+        out.flush();
+    }
+    
+    private ConfigurationBuilder configTwitter() {
+        ConfigurationBuilder cb = new ConfigurationBuilder();
+           cb.setDebugEnabled(true)
+            .setOAuthConsumerKey(CONSUMER_KEY)
+            .setOAuthConsumerSecret(CONSUMER_SECRET)
+            .setOAuthAccessToken(ACCESS_KEY)
+            .setOAuthAccessTokenSecret(ACCESS_SECRET);
+        return cb;
+    }
+    
+    private JSONArray searchTopic(ConfigurationBuilder cb, String topic) {
+        
+        Twitter twitter = new TwitterFactory(cb.build()).getInstance();
+        Query query = new Query("#" + topic);
+        QueryResult qr;
+        JSONArray tweetArray = new JSONArray();
+         
+        try {
+            qr = twitter.search(query);
+            List<Status> listT = qr.getTweets();
+            for(int i = 0; i < 8; i++){
+                JSONObject tweetInfo = new JSONObject();
+                Status s = listT.get(i);
+                User u=(User) s.getUser();;
+                String userName=u.getName();
+                
+                String text = s.getText();
+                String tweetUrl= "https://twitter.com/" + u.getScreenName() 
+                + "/status/" + s.getId();
+                String imageUrl = u.getProfileImageURL();
+                
+                tweetInfo.put("userName", userName);
+                tweetInfo.put("text", text);
+                tweetInfo.put("tweetUrl", tweetUrl);
+                tweetInfo.put("imageUrl", imageUrl);
+                
+                tweetArray.put(i, tweetInfo);
+            } 
+        } catch (TwitterException ex) {
+            Logger.getLogger(GetTweetsServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JSONException ex) {
+            Logger.getLogger(GetTweetsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+        return tweetArray;
     }
 
     /**
