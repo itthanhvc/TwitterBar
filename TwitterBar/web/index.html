@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Twitter Bar</title>
@@ -11,28 +6,37 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/Home.css" rel="stylesheet" type="text/css"/>
         <link href="css/Main.css" rel="stylesheet" type="text/css"/>
-
+        <link href="css/font-awesome.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
+    <body data-ng-cloak>
         <header>
             <div class="container">
                 <nav>
-                    <ul class="nav  navBar nav-left">
+                    <ul class="nav navBar nav-left">
                         <li>
-                            <strong>CS427</strong> TwitterBar
+                            <span><i class="fa fa-twitter"></i> <strong> CS427</strong> TwitterBar</span>
                         </li> 
                     </ul>
                     <ul class="nav navBar nav-right">
                         <li class="active">
-                            <a href="../getting-started/">Getting started</a>
+                            <a href="#tweets">Tweets</a>
                         </li> 
-                        <li> <a href="../css/">CSS</a> </li>
-                        <li> <a href="../components/">Components</a></li>
-                        <li> <a href="../javascript/">JavaScript</a></li>
-                        <li> <a href="../customize/">Customize</a></li>
+                        <li> <a href="#map">Map</a> </li>
+                        <li> <a href="#trends">Trends</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
+        <div class="container">
+            <div ui-view class="slide-animation"></div>
+        </div>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.js"></script>
+        <script src="js/angular-ui-router.js" type="text/javascript"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-resource.js"></script>
+        <script src="js/app.Config.js" type="text/javascript"></script>
+        <script src="js/bootstrap.js" type="text/javascript"></script>
+        <script src="controllers/tweetsController.js" type="text/javascript"></script>
     </body>
 </html>
