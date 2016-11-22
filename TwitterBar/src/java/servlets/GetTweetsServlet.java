@@ -87,12 +87,7 @@ public class GetTweetsServlet extends HttpServlet {
                         + "/status/" + s.getId();
                 String imageUrl = u.getProfileImageURL();
                 Feed feed = new Feed(imageUrl, userName, tweetUrl, text);
-//                tweetInfo.put("userName", userName);
-//                tweetInfo.put("text", text);
-//                tweetInfo.put("tweetUrl", tweetUrl);
-//                tweetInfo.put("imageUrl", imageUrl);
                 feeds.add(feed);
-                //tweetArray.put(i, tweetInfo);
             }
         } catch (TwitterException ex) {
             Logger.getLogger(GetTweetsServlet.class.getName()).log(Level.SEVERE, null, ex);

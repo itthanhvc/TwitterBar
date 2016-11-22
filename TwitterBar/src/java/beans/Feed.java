@@ -5,35 +5,35 @@ import java.util.List;
 
 public class Feed {
 
-    private String Image;
-    private String Title;
-    private String Link;
-    private String LinkText;
+    private String imageUrl;
+    private String userName;
+    private String tweetUrl;
+    private String text;
 
     public Feed() {
     }
 
-    public Feed(String image, String title, String link, String linkText) {
-        this.Link = link;
-        this.Image = image;
-        this.Title = title;
-        this.LinkText = linkText;
+    public Feed(String image, String userName, String tweetUrl, String text) {
+        this.tweetUrl = tweetUrl;
+        this.imageUrl = image;
+        this.userName = userName;
+        this.text = text;
     }
 
     public String getImage() {
-        return this.Image;
+        return this.imageUrl;
     }
 
     public String getLink() {
-        return this.Link;
+        return this.tweetUrl;
     }
 
     public String getLinkText() {
-        return this.LinkText;
+        return this.text;
     }
 
     public String getTitle() {
-        return this.Title;
+        return this.userName;
     }
 
 }
