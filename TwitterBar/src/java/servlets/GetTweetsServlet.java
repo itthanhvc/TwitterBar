@@ -7,12 +7,16 @@ package servlets;
 
 import beans.Feed;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import helpers.RequestHelper;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.json.Json;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,34 +40,20 @@ import twitter4j.conf.ConfigurationBuilder;
  */
 public class GetTweetsServlet extends HttpServlet {
 
-    public static final String CONSUMER_KEY = "0G9Q20NCuK1hIWjYvdEBbGaEl";
-    public static final String CONSUMER_SECRET = "x3nx3SjYT6hdJBx1dcRFVxhBePbAl2CDIyO9xyHZi3kSgmtLqG";
-    public static final String ACCESS_KEY = "995074657-miNaA7Vqofi7FInIdg8DOXboNjwdP1Kap4Wfm3vP";
-    public static final String ACCESS_SECRET = "GRRuPiSvc4eg3uBQbn2htYbkJo4p3FK0zUgOdciuKdQIt";
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-        String topic = req.getParameter("topic");
+        String topic = RequestHelper.GetParameter(req, "topic").toString();
         System.out.println(topic);
-        ConfigurationBuilder cb = configTwitter();
-//        JSONArray tweetInfos = searchTopic(cb, topic);
-        
+        ConfigurationBuilder cb = RequestHelper.configTwitter();
+
         resp.setContentType("application/json");
         out.print(new Gson().toJson(searchTopic(cb, topic)));
         out.flush();
     }
 
-    private ConfigurationBuilder configTwitter() {
-        ConfigurationBuilder cb = new ConfigurationBuilder();
-        cb.setDebugEnabled(true)
-                .setOAuthConsumerKey(CONSUMER_KEY)
-                .setOAuthConsumerSecret(CONSUMER_SECRET)
-                .setOAuthAccessToken(ACCESS_KEY)
-                .setOAuthAccessTokenSecret(ACCESS_SECRET);
-        return cb;
-    }
+    
 
     private List<Feed> searchTopic(ConfigurationBuilder cb, String topic) {
 
@@ -92,7 +82,7 @@ public class GetTweetsServlet extends HttpServlet {
         } catch (TwitterException ex) {
             Logger.getLogger(GetTweetsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return feeds ;//tweetArray;
+        return feeds;//tweetArray;
     }
 
     /**

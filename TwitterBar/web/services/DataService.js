@@ -46,7 +46,7 @@
     DataService.prototype.post = function (data) {
         var url = this.controllerName;
         var defer = this.$q.defer();
-        this.$http.post(url, data)
+        this.$http.post(url, JSON.stringify(data))
                 .success(function (response) {
                     defer.resolve(response);
                 }).error(function (response) {
