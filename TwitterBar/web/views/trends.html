@@ -1,1 +1,5 @@
 <div>Trends</div>
+<div ng-repeat="trend in trends">
+    {{trend}}
+    <a href="{{trend.trendLink}}">{{trend.trendName}}</a>
+</div>

@@ -6,16 +6,23 @@
 package servlets;
 
 import beans.TrendsFeed;
+import com.google.gson.Gson;
 import helpers.RequestHelper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import twitter4j.Trend;
+import twitter4j.Trends;
 import twitter4j.Twitter;
+import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
@@ -30,12 +37,30 @@ public class GetTrendServlet extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
         ConfigurationBuilder cb = RequestHelper.configTwitter();
+        String strWoeid = RequestHelper.GetParameter(req, "woeid").toString();
+        int woeid = Integer.parseInt(strWoeid);
         resp.setContentType("application/json");
+        out.print(new Gson().toJson(getTrends(cb, 2295414)));
+        out.flush();
     }
     
-    private List<TrendsFeed> getTrends(ConfigurationBuilder cb, String loc) {
+    private List<TrendsFeed> getTrends(ConfigurationBuilder cb, int woeid) {
         Twitter twitter = new TwitterFactory(cb.build()).getInstance();
-        List<TrendsFeed> list = new ArrayList<>();
+        Trends trends = null;
+        List<TrendsFeed> list = new ArrayList<TrendsFeed>();
+        
+        try {
+            trends = twitter.getPlaceTrends(woeid);
+            for(int i = 0; i < 5; i++){
+                String name = trends.getTrends()[i].getName();
+                String link = trends.getTrends()[i].getURL();
+                TrendsFeed f = new TrendsFeed(link, name);
+                list.add(f);
+            }
+            
+        } catch (TwitterException ex) {
+            Logger.getLogger(GetTrendServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         return list;
     }

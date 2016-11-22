@@ -8,7 +8,12 @@
              postTweets: function (topic) {
                var ds = new DataService("GetTweetsServlet", $q, $http);
                return ds.post(topic);
+            },
+            postTrends: function(woeid) {
+                var ds = new DataService("GetTrendServlet", $q, $http);
+                return ds.post(woeid)
             }
+            
         };
     });
     function DataService(controllerName, $q, $http) {

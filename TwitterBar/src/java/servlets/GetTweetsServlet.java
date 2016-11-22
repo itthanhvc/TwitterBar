@@ -49,7 +49,8 @@ public class GetTweetsServlet extends HttpServlet {
         ConfigurationBuilder cb = RequestHelper.configTwitter();
 
         resp.setContentType("application/json");
-        out.print(new Gson().toJson(searchTopic(cb, topic)));
+        List<Feed> list = searchTopic(cb, topic);
+        out.print(new Gson().toJson(list));
         out.flush();
     }
 
