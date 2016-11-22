@@ -16,6 +16,10 @@
         <servlet-name>GetTweetsServlet</servlet-name>
         <servlet-class>servlets.GetTweetsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetTrendServlet</servlet-name>
+        <servlet-class>servlets.GetTrendServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>GetTweetsServlet</servlet-name>
         <url-pattern>/GetTweetsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetTrendServlet</servlet-name>
+        <url-pattern>/GetTrendServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

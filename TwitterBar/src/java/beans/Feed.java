@@ -3,6 +3,7 @@ package beans;
 import java.util.ArrayList;
 import java.util.List;
 
+//this is for tweet object
 public class Feed {
 
     private String imageUrl;
