@@ -35,7 +35,7 @@ public class RequestHelper {
         while ((str = br.readLine()) != null) {
             sb.append(str);
         }
-        JSONObject jObj = null;
+        JSONObject jObj = null; 
         Object result = null;
         try {
             jObj = new JSONObject(sb.toString());
