@@ -10,7 +10,7 @@
         <link href="css/spinner.css" rel="stylesheet" type="text/css"/>
     </head>
     <body data-ng-cloak>
-        <header>
+        <header class="topBanner">
             <div class="container">
                 <nav>
                     <ul class="nav navBar nav-left">
@@ -28,9 +28,14 @@
                 </nav>
             </div>
         </header>
-        <div class="container">
-            <div ui-view class="slide-animation"></div>
+        <div class="appContent">
+            <div class="container banner">
+            </div>
+            <div class="container">
+                <div ui-view class="slide-animation"></div>
+            </div>
         </div>
+
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.js"></script>

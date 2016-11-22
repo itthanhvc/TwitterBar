@@ -20,6 +20,9 @@ body {
     color: #333;
     background-color: #FFF;
 }
+header{
+    background-color: #FFF;
+}
 /* Animations */
 .slide-animation-container {
     position: relative;
@@ -57,4 +60,24 @@ body {
 .slide-animation.ng-leave.ng-leave-active {
     left: -100px;
     opacity: 0;
+}
+.banner{
+    background: no-repeat url(../images/twitter-banner.jpg) #ffffff;
+    height: 201px;
+    max-width: 2560px;
+    position: relative;
+}
+.topBanner{
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-bottom: 1px solid #e1e8ed;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+.appContent{
+    padding: 57px 0 0;
 }
