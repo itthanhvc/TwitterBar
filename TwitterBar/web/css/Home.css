@@ -62,14 +62,14 @@ header{
     opacity: 0;
 }
 .banner{
-    background: no-repeat url(../images/twitter-banner.jpg) #ffffff;
-    height: 201px;
-    max-width: 2560px;
-    position: relative;
+    background: #59CAFD url(../images/twitter-banner.jpg) no-repeat center;
+    height: 200px;
+    background-size: 100% 100%;
 }
 .topBanner{
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    background-color: #F5F8FA;
     border-bottom: 1px solid #e1e8ed;
     border-bottom: 1px solid rgba(0,0,0,0.05);
     position: fixed;
