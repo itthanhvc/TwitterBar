@@ -19,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import twitter4j.GeoLocation;
 import twitter4j.Trend;
 import twitter4j.Trends;
 import twitter4j.Twitter;
@@ -37,19 +38,27 @@ public class GetTrendServlet extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
         ConfigurationBuilder cb = RequestHelper.configTwitter();
-        String strWoeid = RequestHelper.GetParameter(req, "woeid").toString();
-        int woeid = Integer.parseInt(strWoeid);
+        String strLat = RequestHelper.GetParameter(req, "latitude").toString();
+        String strLong = RequestHelper.GetParameter(req, "longitude").toString(); 
+        double longitude = Double.parseDouble(strLong);
+        double latitude = Double.parseDouble(strLat);
+        //String strWoeid = RequestHelper.GetParameter(req, "woeid").toString();
+        //int woeid = Integer.parseInt(strWoeid);
         resp.setContentType("application/json");
-        out.print(new Gson().toJson(getTrends(cb, 2295414)));
+        out.print(new Gson().toJson(getTrends(cb, longitude, latitude)));
         out.flush();
     }
     
-    private List<TrendsFeed> getTrends(ConfigurationBuilder cb, int woeid) {
+    private List<TrendsFeed> getTrends(ConfigurationBuilder cb, double longitude, double latitude) {
         Twitter twitter = new TwitterFactory(cb.build()).getInstance();
         Trends trends = null;
         List<TrendsFeed> list = new ArrayList<TrendsFeed>();
         
         try {
+            
+            GeoLocation gl = new GeoLocation(latitude, longitude);
+            int woeid = twitter.getClosestTrends(gl).get(0).getWoeid();
+            System.out.println("WOEID: " + woeid);
             trends = twitter.getPlaceTrends(woeid);
             for(int i = 0; i < 5; i++){
                 String name = trends.getTrends()[i].getName();

@@ -29,7 +29,7 @@ public class RequestHelper {
     private static final String ACCESS_SECRET = "GRRuPiSvc4eg3uBQbn2htYbkJo4p3FK0zUgOdciuKdQIt";
     
     public static Object GetParameter(HttpServletRequest req, String key) throws IOException{
-         StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         BufferedReader br = req.getReader();
         String str = null;
         while ((str = br.readLine()) != null) {
@@ -38,7 +38,7 @@ public class RequestHelper {
         JSONObject jObj = null; 
         Object result = null;
         try {
-            jObj = new JSONObject(sb.toString());
+           jObj = new JSONObject(sb.toString());
            result = jObj.get(key);
         } catch (JSONException ex) {
             Logger.getLogger(GetTweetsServlet.class.getName()).log(Level.SEVERE, null, ex);
