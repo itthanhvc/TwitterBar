@@ -1,0 +1,96 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 23, 2016, 10:12:56 PM
+    Author     : utku
+*/
+.tweetbox{
+    border : solid 1px lightgray;
+    color: black;
+    float: left;
+    
+    padding: 5px;
+    overflow: hidden;
+    height: 200px;
+    min-width: 150px;
+    border-radius: 5px;
+}
+
+.tweetbox div img {
+    border-radius: 5px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+/******************************************** Media ********************************************/
+@media only screen and (min-width:480px){
+        /* styles for browsers larger than 960px; */
+        .tweetbox{
+            width: 96%;
+            margin: 2%;
+        }
+    }
+@media only screen and (min-width:768px){
+        /* styles for browsers larger than 960px; */
+        .tweetbox{
+            width: 45%;
+            margin: 1%;
+        }
+    }
+@media only screen and (min-width:1080px){
+        /* styles for browsers larger than 1080px; */
+        .tweetbox{
+            width: 21%;
+            margin: 1%;
+        }
+    }
+    @media only screen and (min-width:1440px){
+        /* styles for browsers larger than 1440px; */
+        .tweetbox{
+            width: 21%;
+            margin: 1%;
+        }
+    }
+    @media only screen and (min-width:2000px){
+        /* for sumo sized (mac) screens */
+        .tweetbox{
+            width: 21%;
+            margin: 1%;
+        }
+    }
+    @media only screen and (max-device-width:480px){
+       /* styles for mobile browsers smaller than 480px; (iPhone) */
+       .tweetbox{
+            width: 96%;
+            margin: 2%;
+        }
+    }
+    @media only screen and (device-width:768px){
+       /* default iPad screens */
+       .tweetbox{
+            width: 48%;
+            margin: 1%;
+        }
+    }
+    /* different techniques for iPad screening */
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+      /* For portrait layouts only */
+      .tweetbox{
+            width: 48%;
+            margin: 1%;
+        }
+    }
+
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+      /* For landscape layouts only */
+      .tweetbox{
+            width: 48%;
+            margin: 1%;
+        }
+    }
+
+
+

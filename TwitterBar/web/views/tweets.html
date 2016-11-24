@@ -16,5 +16,13 @@
 
 </nav>
 <div ng-repeat="tweet in tweets">
-    <img ng-src ="{{tweet.imageUrl}}"/> <p>{{tweet.text}}</p>
+    <a href="{{tweet.tweetUrl}}">
+        <div class = "tweetbox">
+            <div>
+                <img height="60px" width="60px" ng-src ="{{tweet.imageUrl}}"/>
+                <span>{{tweet.userName}}</span>
+            </div>
+            <p>{{tweet.text}}</p>
+        </div>
+    </a>
 </div>
