@@ -8,6 +8,105 @@ and open the template in the editor.
     Author     : ThanhVan
     Description: This file handles these styles for entired project
 */
+/********************************************Elements********************************************/
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #FFF;
+}
+header{
+    background-color: #FFF;
+}
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+ul.topnav li a:hover {background-color: #555;}
+
+ul.topnav li.icon {display: none;}
+/********************************************Custom Class********************************************/
+/* Animations */
+.slide-animation-container {
+    position: relative;
+}
+
+.slide-animation.ng-enter, .slide-animation.ng-leave {
+    -moz-transition: 0.5s linear all;
+    -o-transition: 0.5s linear all;
+    -webkit-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+    position: relative;
+    /*top: 0;
+    left: 0;
+    right: 0;*/
+    height: 1000px;
+}
+
+.slide-animation.ng-enter {
+    z-index: 100;
+    left: 100px;
+    opacity: 0;
+}
+
+.slide-animation.ng-enter.ng-enter-active {
+    left: 0;
+    opacity: 1;
+}
+
+.slide-animation.ng-leave {
+    z-index: 101;
+    opacity: 1;
+    left: 0;
+}
+
+.slide-animation.ng-leave.ng-leave-active {
+    left: -100px;
+    opacity: 0;
+}
+.banner{
+    background: #59CAFD url(../images/twitter-banner.jpg) no-repeat center;
+    height: 200px;
+    background-size: 100% 100%;
+}
+.topBanner{
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: #F5F8FA;
+    border-bottom: 1px solid #e1e8ed;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    min-height: 45px;
+}
+.appContent{
+    margin-top: 50px;
+}
 /* Each column less than 8.333333333333333%*/
 .col-12 {
     width: 100%;
@@ -94,6 +193,7 @@ and open the template in the editor.
     height: auto!important;
     padding-bottom: 0;
     overflow: visible!important;
+    margin-top: 0;
 }
 .navBar > li{
     float: left;
@@ -104,6 +204,8 @@ and open the template in the editor.
 .nav-right{
     float: right!important;
 }
+
+/******************************************** Media ********************************************/
 /*Specific handler for media based on screen width*/
 @media (min-width: 768px){
     .container > navBar{
@@ -125,5 +227,29 @@ and open the template in the editor.
 @media (min-width: 1200px) {
     .container {
         width: 1170px;
+    }
+}
+@media screen and (max-width:680px) {
+    ul.topnav li:not(:first-child) {display: none;}
+    ul.topnav li.icon {
+        float: right;
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width:680px) {
+    ul.topnav.responsive {position: relative;}
+    ul.topnav.responsive li.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    ul.topnav.responsive li {
+        float: none;
+        display: inline;
+    }
+    ul.topnav.responsive li a {
+        display: block;
+        text-align: left;
     }
 }
