@@ -4,7 +4,7 @@
             $scope.trends = [];
             NgMap.getMap().then(function (map) {
                 map.addListener('click', function (e) {
-                    DataService.postTrends({"latitude": "37.781157", "longitude": "-122.400612831116"})
+                    DataService.getTrends("37.781157", "-122.400612831116")
                             .then(function (response) {
                         $scope.trends = response;
                     });

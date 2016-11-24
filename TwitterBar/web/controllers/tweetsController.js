@@ -3,7 +3,7 @@
     tweetApp.controller("tweetsCtrl", ['$scope','DataService', function ($scope, DataService) {
             $scope.tweets = [];
 
-        DataService.postTweets({"topic":"action"}).then(function(response){
+        DataService.getTweets("action").then(function(response){
             $scope.tweets = response;
         });
         

@@ -41,10 +41,10 @@ import twitter4j.conf.ConfigurationBuilder;
 public class GetTweetsServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-        String topic = RequestHelper.GetParameter(req, "topic").toString();
+        String topic = req.getParameter("topic");
         System.out.println(topic);
         ConfigurationBuilder cb = RequestHelper.configTwitter();
 

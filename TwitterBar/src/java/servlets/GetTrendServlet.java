@@ -34,12 +34,12 @@ import twitter4j.conf.ConfigurationBuilder;
 public class GetTrendServlet extends HttpServlet {
     
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
         ConfigurationBuilder cb = RequestHelper.configTwitter();
-        String strLat = RequestHelper.GetParameter(req, "latitude").toString();
-        String strLong = RequestHelper.GetParameter(req, "longitude").toString(); 
+        String strLat = req.getParameter("latitude");
+        String strLong = req.getParameter("longitude"); 
         double longitude = Double.parseDouble(strLong);
         double latitude = Double.parseDouble(strLat);
         //String strWoeid = RequestHelper.GetParameter(req, "woeid").toString();

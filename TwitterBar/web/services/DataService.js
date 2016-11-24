@@ -3,16 +3,13 @@
        return {
             getTweets: function (topic) {
                var ds = new DataService("GetTweetsServlet", $q, $http);
-               return ds.get(topic);
+               return ds.get("?topic="+topic);
             }, 
-             postTweets: function (topic) {
-               var ds = new DataService("GetTweetsServlet", $q, $http);
-               return ds.post(topic);
-            },
-            postTrends: function(woeid) {
+            getTrends: function(latitude, longitude) {
                 var ds = new DataService("GetTrendServlet", $q, $http);
-                return ds.post(woeid)
-            }
+                return ds.get("?latitude="+latitude +"&longitude="+ longitude)
+            },
+             
             
         };
     });
