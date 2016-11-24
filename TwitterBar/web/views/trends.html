@@ -1,4 +1,9 @@
 <div>Trends</div>
+<div id="map"></div>
 <div ng-repeat="trend in trends">
     <a href="{{trend.trendLink}}">{{trend.trendName}}</a>
 </div>
+<script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLXDRCKdo_jR79v1o7p06nN3Z_rtlZxe8&callback=initMap">
+</script>
+<script src="js/map.js" type="text/javascript"></script>
