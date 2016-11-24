@@ -1,4 +1,6 @@
-<ng-map zoom="10" default-style="true" on-click="placeInfoWindowTrend(event)">
+<div class="padding-top10">Trends</div>
+<hr/>
+<ng-map zoom="10" default-style="true" id="map" on-click="placeInfoWindowTrend(event)">
     <marker position="current" 
             animation="Animation.BOUNCE" centered="true"
             on-click="placeInfoWindowTrend(event)">
