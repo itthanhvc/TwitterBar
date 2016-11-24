@@ -1,16 +1,15 @@
 (function () {
     tweetApp.factory('DataService', function ($http, $q) {
-       return {
+        return {
             getTweets: function (topic) {
-               var ds = new DataService("GetTweetsServlet", $q, $http);
-               return ds.get("?topic="+topic);
-            }, 
-            getTrends: function(latitude, longitude) {
-                var ds = new DataService("GetTrendServlet", $q, $http);
-                return ds.get("?latitude="+latitude +"&longitude="+ longitude)
+                var ds = new DataService("GetTweetsServlet", $q, $http);
+                return ds.get("?topic=" + topic);
             },
-             
-            
+            getTrends: function (latitude, longitude) {
+                var ds = new DataService("GetTrendServlet", $q, $http);
+                return ds.get("?latitude=" + latitude + "&longitude=" + longitude)
+            },
+
         };
     });
     function DataService(controllerName, $q, $http) {
@@ -18,15 +17,6 @@
         this.$q = $q;
         this.$http = $http;
         //this function is binding to ajax event to show up loading icon when getting data from server
-        $(document).bind("ajaxSend", function () {
-            $.blockUI({message: "<div id='spinner' class='spinner'>\n\
-                                 <img id='img-spinner' src='../Images/ajax-loader.gif' alt='Loading' /></div>"});
-        }).bind("ajaxStop", function (event, xhr, settings) {
-            $.unblockUI();
-        }).bind("ajaxError", function (event, jqXHR, ajaxSettings, errorThrown) {
-            $.unblockUI();
-            DataService.showFriendlyError();
-        });
     }
 
     DataService.prototype.get = function (query) {
