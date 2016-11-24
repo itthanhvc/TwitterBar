@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 23, 2016, 10:12:56 PM
+    Author     : utku
+*/
+.tweetbox{
+    border : solid 1px lightgray;
+    color: black;
+    float: left;
+    width: 21%;
+    margin: 1%;
+    padding: 5px;
+    overflow: hidden;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.tweetbox div img {
+    border-radius: 5px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+
+
