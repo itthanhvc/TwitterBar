@@ -193,6 +193,9 @@ footer p{
     margin-bottom: 0px;
 }
 
+#map{
+    height: 400px!important;
+}
 /******************************************** Media ********************************************/
 /*Specific handler for media based on screen width*/
 @media (min-width: 768px){
