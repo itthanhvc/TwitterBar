@@ -185,15 +185,18 @@ footer p{
 }
 div.banner{
     background: #59CAFD url(../images/twitter-banner.jpg) no-repeat center;
-    height: 300px;
+    height: 200px;
     background-size: 100% 100%;
     font-size: 20px; 
     position:relative;
     padding:0px;
     margin:0px;
 }
+div.bannerBackground{
+    background-color: #59CAFD;
+}
 div.banner div{
-    width: 15%;
+    width: auto;
     height: 5%;
     position: absolute;
     top:47%;
