@@ -1,5 +1,14 @@
 <div>Trends</div>
-<div ng-repeat="trend in trends">
-    <a href="{{trend.trendLink}}">{{trend.trendName}}</a>
-</div>
-<ng-map center="[40.74, -74.18]"></ng-map>
+<ng-map zoom="10" default-style="true" on-click="placeInfoWindowTrend(event)">
+    <marker position="current" 
+            animation="Animation.BOUNCE" centered="true"
+            on-click="placeInfoWindowTrend(event)">
+    </marker>
+    <info-window id="trend-info" position="{{currentPosition}}">
+        <div ng-non-bindable="">
+        <div ng-repeat="trend in trends">
+            <a href="{{trend.trendLink}}">{{trend.trendName}}</a>
+        </div>
+      </div>
+    </info-window>
+</ng-map>
