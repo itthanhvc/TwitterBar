@@ -107,43 +107,6 @@ ul.topnav li.icon {display: none;}
 .appContent{
     margin-top: 50px;
 }
-/* Each column less than 8.333333333333333%*/
-.col-12 {
-    width: 100%;
-}
-.col-11 {
-    width: 91.66666667%;
-}
-.col-10 {
-    width: 83.33333333%;
-}
-.col-9 {
-    width: 75%;
-}
-.col-8 {
-    width: 66.66666667%;
-}
-.col-7 {
-    width: 58.33333333%;
-}
-.col-6 {
-    width: 50%;
-}
-.col-5 {
-    width: 41.66666667%;
-}
-.col-4 {
-    width: 33.33333333%;
-}
-.col-3 {
-    width: 25%;
-}
-.col-2 {
-    width: 16.66666667%;
-}
-.col-1 {
-    width: 8.33333333%;
-}
 .container {
     padding-right: 15px;
     padding-left: 15px;
@@ -164,6 +127,7 @@ ul.topnav li.icon {display: none;}
     position: relative;
     display: block;
     padding: 15px 15px;
+    text-decoration: none;
 }
 .nav > li > span {
     position: relative;
