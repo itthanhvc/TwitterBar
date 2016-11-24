@@ -88,11 +88,6 @@ ul.topnav li.icon {display: none;}
     left: -100px;
     opacity: 0;
 }
-.banner{
-    background: #59CAFD url(../images/twitter-banner.jpg) no-repeat center;
-    height: 200px;
-    background-size: 100% 100%;
-}
 .topBanner{
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -180,10 +175,6 @@ ul.topnav li.icon {display: none;}
 
 footer p{
     clear:both;
-    position: fixed;
-    bottom:0;
-    left:0;
-    right:0;
     background-color: #000;
     color: #fff;
     padding-top: 10px;
@@ -191,6 +182,29 @@ footer p{
     padding-left: 20%;
     vertical-align: middle;
     margin-bottom: 0px;
+}
+div.banner{
+    background: #59CAFD url(../images/twitter-banner.jpg) no-repeat center;
+    height: 300px;
+    background-size: 100% 100%;
+    font-size: 20px; 
+    position:relative;
+    padding:0px;
+    margin:0px;
+}
+div.banner div{
+    width: 15%;
+    height: 5%;
+    position: absolute;
+    top:47%;
+    left:42%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+div.banner div span{
+    display:inline;
+    border: 1px solid black;
+    padding: 5px;
+    
 }
 
 #map{
