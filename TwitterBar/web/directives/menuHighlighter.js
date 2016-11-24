@@ -8,9 +8,6 @@
 */
 
 'use strict';
-
-(function () {
-
     var injectParams = ['$location'];
 
     var menuHighlighter = function ($location) {
@@ -55,6 +52,4 @@
 
     menuHighlighter.$inject = injectParams;
 
-    angular.module('wc.directives').directive('menuHighlighter', menuHighlighter);
-
-}());
+    angular.module('tweetApp').directive('menuHighlighter', menuHighlighter);

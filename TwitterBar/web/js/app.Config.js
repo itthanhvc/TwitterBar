@@ -1,4 +1,4 @@
-var tweetApp = angular.module("tweetApp", ['ui.router', 'ngResource', 'ngMap', 'wc.directives']);
+var tweetApp = angular.module("tweetApp", ['ui.router', 'ngResource', 'ngMap']);
 
 tweetApp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('tweets', {
