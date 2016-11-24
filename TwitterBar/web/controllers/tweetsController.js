@@ -1,12 +1,12 @@
 (function () {
     // Controller when the main page/view loads
-    tweetApp.controller("tweetsCtrl", ['$scope','DataService', function ($scope, DataService) {
+    tweetApp.controller("tweetsCtrl", ['$scope', 'DataService', function ($scope, DataService) {
             $scope.tweets = [];
-
-        DataService.getTweets("action").then(function(response){
-            $scope.tweets = response;
-        });
-        
-    }]);
+            $scope.handle = function (topic) {
+                DataService.getTweets(topic).then(function (response) {
+                    $scope.tweets = response;
+                });
+            }
+        }]);
 })();
 

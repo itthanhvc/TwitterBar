@@ -189,7 +189,7 @@ ul.topnav li.icon {display: none;}
     list-style: none;
 }
 .navBar{
-    display: block!important;
+    display: block;
     height: auto!important;
     padding-bottom: 0;
     overflow: visible!important;
@@ -202,9 +202,15 @@ ul.topnav li.icon {display: none;}
     float: left;
 }
 .nav-right{
-    float: right!important;
+    float: right;
+}
+.nav-right.collapse.in{
+    display: block;
 }
 
+.navBars{
+    display: none;
+}
 /******************************************** Media ********************************************/
 /*Specific handler for media based on screen width*/
 @media (min-width: 768px){
@@ -234,6 +240,20 @@ ul.topnav li.icon {display: none;}
     ul.topnav li.icon {
         float: right;
         display: inline-block;
+    }
+}
+@media screen and (max-width: 412px){
+    .nav-right{
+        display: none;
+        float: none;
+    }
+    .navBars{
+        display: block;
+        float: right;
+    }
+    .nav-right li{
+        width: 100%;
+        text-align: center;
     }
 }
 

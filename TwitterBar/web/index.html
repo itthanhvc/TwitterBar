@@ -11,7 +11,7 @@
         <link href="css/spinner.css" rel="stylesheet" type="text/css"/>
         <link href="css/map.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body data-ng-cloak>
+    <body data-ng-cloak ng-controller="mainCtrl">
         <header class="topBanner">
             <div class="container">
                 <nav>
@@ -20,11 +20,18 @@
                             <span><i class="fa fa-twitter"></i> <strong> CS427</strong> TwitterBar</span>
                         </li> 
                     </ul>
-                    <ul class="nav navBar nav-right">
+                    <ul class="nav navBars">
+                        <li>
+                            <button type="button" ng-click="collapse()">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </li>
+
+                    </ul>
+                    <ul class="nav navBar nav-right" ng-class="activeClass">
                         <li class="active">
                             <a href="#tweets">Tweets</a>
                         </li> 
-                        <li> <a href="#map">Map</a> </li>
                         <li> <a href="#trends">Trends</a></li>
                     </ul>
                 </nav>
@@ -32,7 +39,7 @@
         </header>
         <div class="appContent">
             <div class="container banner">
-                    
+
             </div>
             <div class="container">
                 <div ui-view class="slide-animation"></div>
@@ -44,11 +51,12 @@
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.js"></script>
         <script src="js/angular-ui-router.js" type="text/javascript"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-resource.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLXDRCKdo_jR79v1o7p06nN3Z_rtlZxe8"></script>
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLXDRCKdo_jR79v1o7p06nN3Z_rtlZxe8"></script>
         <script src="js/ng-map.min.js" type="text/javascript"></script>
         <script src="js/app.Config.js" type="text/javascript"></script>
-        <script src="js/bootstrap.js" type="text/javascript"></script>
+        <script src="js/bootstraper.js" type="text/javascript"></script>
         <script src="services/DataService.js" type="text/javascript"></script>
+        <script src="controllers/mainController.js" type="text/javascript"></script>
         <script src="controllers/tweetsController.js" type="text/javascript"></script>
         <script src="controllers/trendsController.js" type="text/javascript"></script>
     </body>
