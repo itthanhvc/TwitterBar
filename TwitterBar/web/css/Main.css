@@ -20,6 +20,8 @@ body {
     line-height: 1.42857143;
     color: #333;
     background-color: #FFF;
+    padding:0px;
+    margin:0px;
 }
 header{
     background-color: #FFF;
@@ -175,6 +177,22 @@ ul.topnav li.icon {display: none;}
 .navBars{
     display: none;
 }
+
+footer p{
+    clear:both;
+    position: fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color: #000;
+    color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20%;
+    vertical-align: middle;
+    margin-bottom: 0px;
+}
+
 /******************************************** Media ********************************************/
 /*Specific handler for media based on screen width*/
 @media (min-width: 768px){
