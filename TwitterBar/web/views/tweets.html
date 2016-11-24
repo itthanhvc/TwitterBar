@@ -1,27 +1,20 @@
 <nav class="tweetActionNav">
     <ul class="tweetAction">
-        <li class="active" ng-click="handle('Documentary')">
+        <li ng-click="handle('Documentary')" ng-class="topic =='Documentary'?'active':''">
                 Documentary
         </li> 
-
-
-        <li ng-click="handle('Action')">   
+        <li ng-click="handle('Action')" ng-class="topic =='Action'?'active':''">   
             
                 Action
             
         </li>
-
-
-        <li ng-click="handle('Adventure')"> 
+        <li ng-click="handle('Adventure')" ng-class="topic =='Adventure'?'active':''"> 
             
                 Adventure
         </li>
-
-
-        <li ng-click="handle('Comedy')"> 
+        <li ng-click="handle('Comedy')" ng-class="topic =='Comedy'?'active':''"> 
                 Comedy
         </li>
-
     </ul>
 
 </nav>
