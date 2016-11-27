@@ -16,7 +16,6 @@
         this.controllerName = controllerName;
         this.$q = $q;
         this.$http = $http;
-        //this function is binding to ajax event to show up loading icon when getting data from server
     }
 
     DataService.prototype.get = function (query) {
@@ -47,9 +46,4 @@
 
         return defer.promise;
     };
-
-    DataService.showFriendlyError = function () {
-        var errorMessage = "An error occurred while running application. \nPlease see logs for details";
-        alert(errorMessage);
-    };
-})()
+})();
